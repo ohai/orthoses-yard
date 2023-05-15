@@ -1,0 +1,12 @@
+task "sig" do
+  require 'orthoses-yard'
+  Orthoses::Builder.new do
+    use Orthoses::CreateFileByName, base_dir: "sig"
+    use Orthoses::YARD, parse: ["lib/**/*.rb"]
+    run -> {
+      $LOAD_PATH << "lib"
+      require 'demo'
+    }
+  end.call
+
+end
